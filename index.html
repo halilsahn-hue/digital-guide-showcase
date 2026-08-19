@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Guide — Proje Rehberi</title>
-<meta name="description" content="Digital Guide'ın hazırladığı gerçek web tasarım, AI otomasyon ve dijital pazarlama projelerinden bir seçki. Sektöre göre filtreleyin.">
+<title data-key="doc_title">Digital Guide — Proje Rehberi</title>
+<meta name="description" data-key="doc_desc" content="Digital Guide'ın hazırladığı gerçek web tasarım, AI otomasyon ve dijital pazarlama projelerinden bir seçki. Sektöre göre filtreleyin.">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%231B1F2A%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 font-family=%22Georgia%22 fill=%22%23FFC93C%22 text-anchor=%22middle%22>D</text></svg>">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -43,13 +43,21 @@
     backdrop-filter:blur(6px);
     border-bottom:1px solid var(--line);
   }
-  .site-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1180px;margin:0 auto;}
+  .site-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1180px;margin:0 auto;gap:16px;}
   .wordmark{display:flex;align-items:baseline;gap:8px;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.01em;text-decoration:none;}
   .wordmark small{font-family:var(--mono);font-weight:400;font-size:.65rem;color:var(--ink-soft);letter-spacing:.14em;text-transform:uppercase;}
+  .site-right{display:flex;align-items:center;gap:14px;}
+  .lang-switch{display:flex;border:1px solid var(--line);font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;}
+  .lang-switch button{
+    border:none;background:var(--paper-raise);color:var(--ink-soft);padding:8px 10px;cursor:pointer;
+    border-right:1px solid var(--line);text-transform:uppercase;
+  }
+  .lang-switch button:last-child{border-right:none;}
+  .lang-switch button.active{background:var(--ink);color:var(--accent);}
   .site-cta{
     font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
     border:1px solid var(--ink);padding:9px 16px;text-decoration:none;color:var(--ink);
-    transition:background .15s ease,color .15s ease;
+    transition:background .15s ease,color .15s ease;white-space:nowrap;
   }
   .site-cta:hover{background:var(--ink);color:var(--paper-raise);}
 
@@ -62,7 +70,7 @@
   .eyebrow .dot{width:6px;height:6px;background:var(--live);border-radius:50%;flex:none;}
   h1{
     font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,4.4vw,3.6rem);
-    line-height:1.06;letter-spacing:-.01em;margin:0 0 22px;max-width:14ch;
+    line-height:1.06;letter-spacing:-.01em;margin:0 0 22px;max-width:16ch;
   }
   h1 em{font-style:normal;color:var(--ink-soft);}
   .hero-sub{font-size:1.05rem;line-height:1.6;color:var(--ink-soft);max-width:56ch;margin:0 0 40px;}
@@ -92,7 +100,7 @@
   }
   .tab:hover{border-color:var(--ink);color:var(--ink);}
   .tab.active{background:var(--ink);border-color:var(--ink);color:var(--accent);}
-  .city-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .city-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;align-items:center;}
   .city{
     font-family:var(--mono);font-size:.64rem;letter-spacing:.05em;color:var(--ink-soft);
     padding:4px 0;
@@ -161,7 +169,7 @@
   }
   footer h2{
     font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3.4vw,2.4rem);
-    margin:0 0 16px;max-width:16ch;
+    margin:0 0 16px;max-width:18ch;
   }
   footer p{color:#B9BCC5;max-width:48ch;line-height:1.6;margin:0 0 28px;}
   .wa-cta{
@@ -181,7 +189,8 @@
     .stat-row{grid-template-columns:1fr;}
     .stat{border-right:none;border-bottom:1px solid var(--line);}
     .stat:last-child{border-bottom:none;}
-    .filters{top:53px;}
+    .filters{top:96px;}
+    .site-bar{flex-wrap:wrap;}
   }
   @media (prefers-reduced-motion:reduce){
     *{transition:none !important;scroll-behavior:auto !important;}
@@ -192,20 +201,27 @@
 
 <header class="site">
   <div class="site-bar">
-    <a href="#top" class="wordmark">Digital Guide <small>Proje Rehberi</small></a>
-    <a class="site-cta" href="https://wa.me/message" target="_blank" rel="noopener">WhatsApp</a>
+    <a href="#top" class="wordmark">Digital Guide <small data-key="wordmark_small">Proje Rehberi</small></a>
+    <div class="site-right">
+      <div class="lang-switch" id="langSwitch">
+        <button data-lang="tr" class="active">TR</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="de">DE</button>
+      </div>
+      <a class="site-cta" href="https://wa.me/message" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
   </div>
 </header>
 
 <div class="wrap">
   <section class="hero" id="top">
-    <p class="eyebrow"><span class="dot"></span>Tüm projeler canlı · son kontrol Ağustos 2026</p>
-    <h1>Web sitesi, <em>AI otomasyonu</em> ve dijital pazarlamada gerçekleştirdiklerimiz.</h1>
-    <p class="hero-sub">Almanya, İtalya ve Türkiye'de gerçek işletmeler için kurduğumuz web siteleri ve kendi geliştirdiğimiz AI ürünlerinden bir seçki. Sektöre göre filtreleyin, ne yaptığımızı görün.</p>
+    <p class="eyebrow"><span class="dot"></span><span data-key="hero_eyebrow">Tüm projeler canlı · son kontrol Ağustos 2026</span></p>
+    <h1 data-key="hero_h1">Web sitesi, <em>AI otomasyonu</em> ve dijital pazarlamada gerçekleştirdiklerimiz.</h1>
+    <p class="hero-sub" data-key="hero_sub">Almanya, İtalya ve Türkiye'de gerçek işletmeler için kurduğumuz web siteleri ve kendi geliştirdiğimiz AI ürünlerinden bir seçki. Sektöre göre filtreleyin, ne yaptığımızı görün.</p>
     <div class="stat-row">
-      <div class="stat"><span class="n">20</span><span class="l">Proje</span></div>
-      <div class="stat"><span class="n">8</span><span class="l">Sektör</span></div>
-      <div class="stat"><span class="n">5</span><span class="l">Şehir</span></div>
+      <div class="stat"><span class="n">20</span><span class="l" data-key="stat_proje">Proje</span></div>
+      <div class="stat"><span class="n">8</span><span class="l" data-key="stat_sektor">Sektör</span></div>
+      <div class="stat"><span class="n">5</span><span class="l" data-key="stat_sehir">Şehir</span></div>
     </div>
   </section>
 </div>
@@ -213,25 +229,25 @@
 <div class="filters">
   <div class="wrap">
     <div class="tab-row" id="sectorTabs">
-      <button class="tab active" data-sector="all">Tümü · 20</button>
-      <button class="tab" data-sector="berber">Kuaför &amp; Berber · 2</button>
-      <button class="tab" data-sector="emlak">Emlak &amp; Finans · 2</button>
-      <button class="tab" data-sector="lojistik">Lojistik &amp; Nakliye · 2</button>
-      <button class="tab" data-sector="gastro">Gastronomi &amp; Mekan · 2</button>
-      <button class="tab" data-sector="turizm">Turizm · 1</button>
-      <button class="tab" data-sector="kurumsal">Kurumsal &amp; Ajans · 2</button>
-      <button class="tab" data-sector="rehber">Rehber Platformları · 4</button>
-      <button class="tab" data-sector="ai">AI Destekli Ürünler · 5</button>
+      <button class="tab active" data-sector="all"><span data-key="tab_all">Tümü</span> · 20</button>
+      <button class="tab" data-sector="berber"><span data-key="tab_berber">Kuaför &amp; Berber</span> · 2</button>
+      <button class="tab" data-sector="emlak"><span data-key="tab_emlak">Emlak &amp; Finans</span> · 2</button>
+      <button class="tab" data-sector="lojistik"><span data-key="tab_lojistik">Lojistik &amp; Nakliye</span> · 2</button>
+      <button class="tab" data-sector="gastro"><span data-key="tab_gastro">Gastronomi &amp; Mekan</span> · 2</button>
+      <button class="tab" data-sector="turizm"><span data-key="tab_turizm">Turizm</span> · 1</button>
+      <button class="tab" data-sector="kurumsal"><span data-key="tab_kurumsal">Kurumsal &amp; Ajans</span> · 2</button>
+      <button class="tab" data-sector="rehber"><span data-key="tab_rehber">Rehber Platformları</span> · 4</button>
+      <button class="tab" data-sector="ai"><span data-key="tab_ai">AI Destekli Ürünler</span> · 5</button>
     </div>
     <div class="city-row" id="cityRow">
-      <span class="city">Şehir: </span>
-      <span class="city"><button class="active" data-city="all">Tümü</button></span>
+      <span class="city"><span data-key="city_label">Şehir:</span> </span>
+      <span class="city"><button class="active" data-city="all"><span data-key="city_all">Tümü</span></button></span>
       <span class="city"><button data-city="Bremen">Bremen</button></span>
       <span class="city"><button data-city="Würzburg">Würzburg</button></span>
-      <span class="city"><button data-city="Milano">Milano</button></span>
+      <span class="city"><button data-city="Milano"><span data-key="city_milano">Milano</span></button></span>
       <span class="city"><button data-city="Alanya">Alanya</button></span>
       <span class="city"><button data-city="Ankara">Ankara</button></span>
-      <span class="city"><button data-city="Online">Online</button></span>
+      <span class="city"><button data-city="Online"><span data-key="city_online">Online</span></button></span>
     </div>
   </div>
 </div>
@@ -239,160 +255,160 @@
 <main class="wrap">
 
   <section class="sector" data-sector="berber">
-    <div class="sector-head"><h2>Kuaför &amp; Berber Salonları</h2><span class="count">2 proje</span></div>
+    <div class="sector-head"><h2 data-key="sec_berber_title">Kuaför &amp; Berber Salonları</h2><span class="count" data-key="sec_berber_count">2 proje</span></div>
     <div class="grid">
       <a class="card" data-city="Bremen" href="https://gulcan.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Bremen · Marka &amp; Web</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Bremen · <span data-key="meta_brandweb">Marka &amp; Web</span></span><span class="arrow">↗</span></div>
         <h3>Gülcan's Frisör</h3>
-        <p>Bremen-Hemelingen'de kişisel kadın, erkek ve çocuk kuaförü. Saç kesimi, renk, styling ve sakal bakımı — WhatsApp veya telefonla randevu.</p>
+        <p data-key="d_gulcan">Bremen-Hemelingen'de kişisel kadın, erkek ve çocuk kuaförü. Saç kesimi, renk, styling ve sakal bakımı — WhatsApp veya telefonla randevu.</p>
       </a>
       <a class="card" data-city="Bremen" href="https://m-style-barbershop-drab.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Bremen · Web Sitesi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Bremen · <span data-key="meta_web">Web Sitesi</span></span><span class="arrow">↗</span></div>
         <h3>M Style Barbershop</h3>
-        <p>Bremen-Neustadt'ta erkek kuaförü. WhatsApp ve telefon üzerinden hızlı randevu, çocuk saç kesimi dahil hizmet listesi.</p>
+        <p data-key="d_mstyle">Bremen-Neustadt'ta erkek kuaförü. WhatsApp ve telefon üzerinden hızlı randevu, çocuk saç kesimi dahil hizmet listesi.</p>
       </a>
     </div>
   </section>
 
   <section class="sector" data-sector="emlak">
-    <div class="sector-head"><h2>Emlak &amp; Finans Danışmanlığı</h2><span class="count">2 proje</span></div>
+    <div class="sector-head"><h2 data-key="sec_emlak_title">Emlak &amp; Finans Danışmanlığı</h2><span class="count" data-key="sec_emlak_count">2 proje</span></div>
     <div class="grid">
       <a class="card" data-city="Bremen" href="https://saray-emlak.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Bremen · Web Sitesi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Bremen · <span data-key="meta_web">Web Sitesi</span></span><span class="arrow">↗</span></div>
         <h3>Saray Emlak</h3>
-        <p>Bremen'de Türkçe konuşan emlak danışmanı için satılık/kiralık ilan vitrini ve Türkiye'den gelen ailelere özel rehber sayfaları.</p>
+        <p data-key="d_saray">Bremen'de Türkçe konuşan emlak danışmanı için satılık/kiralık ilan vitrini ve Türkiye'den gelen ailelere özel rehber sayfaları.</p>
       </a>
       <a class="card" data-city="Bremen" href="https://maklerbuero-tezcan.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Bremen · Web Sitesi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Bremen · <span data-key="meta_web">Web Sitesi</span></span><span class="arrow">↗</span></div>
         <h3>Maklerbüro Tezcan</h3>
-        <p>Baufinanzierung, sigorta ve emlak danışmanlığı sunan büro için 20+ yıllık tecrübeyi ve 2.500'den fazla müşteriyi öne çıkaran kurumsal site.</p>
+        <p data-key="d_tezcan">Baufinanzierung, sigorta ve emlak danışmanlığı sunan büro için 20+ yıllık tecrübeyi ve 2.500'den fazla müşteriyi öne çıkaran kurumsal site.</p>
       </a>
     </div>
   </section>
 
   <section class="sector" data-sector="lojistik">
-    <div class="sector-head"><h2>Lojistik &amp; Nakliye</h2><span class="count">2 proje</span></div>
+    <div class="sector-head"><h2 data-key="sec_lojistik_title">Lojistik &amp; Nakliye</h2><span class="count" data-key="sec_lojistik_count">2 proje</span></div>
     <div class="grid">
       <a class="card" data-city="Würzburg" href="https://keskin-transporte.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Würzburg · Kurumsal Site</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Würzburg · <span data-key="meta_corporate">Kurumsal Site</span></span><span class="arrow">↗</span></div>
         <h3>Keskin Transporte</h3>
-        <p>Würzburg merkezli nakliye firması için soğuk zincir, yük ve inşaat malzemesi taşımacılığını anlatan, teklif formlu kurumsal site.</p>
+        <p data-key="d_keskin">Würzburg merkezli nakliye firması için soğuk zincir, yük ve inşaat malzemesi taşımacılığını anlatan, teklif formlu kurumsal site.</p>
       </a>
       <a class="card" data-city="Bremen" href="https://logistik-radar.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Bremen · Kendi Ürünümüz</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Bremen · <span data-key="meta_ownproduct">Kendi Ürünümüz</span></span><span class="arrow">↗</span></div>
         <h3>Logistik Radar</h3>
-        <p>Spedisyon ve gümrük acenteleri için liman riski erken uyarı sistemi — müşteriler sormadan önce günlük WhatsApp ve e-posta brifingi.</p>
-        <span class="tag">AI Sistemi</span>
+        <p data-key="d_logistikradar">Spedisyon ve gümrük acenteleri için liman riski erken uyarı sistemi — müşteriler sormadan önce günlük WhatsApp ve e-posta brifingi.</p>
+        <span class="tag" data-key="tag_ai">AI Sistemi</span>
       </a>
     </div>
   </section>
 
   <section class="sector" data-sector="gastro">
-    <div class="sector-head"><h2>Gastronomi &amp; Mekanlar</h2><span class="count">2 proje</span></div>
+    <div class="sector-head"><h2 data-key="sec_gastro_title">Gastronomi &amp; Mekanlar</h2><span class="count" data-key="sec_gastro_count">2 proje</span></div>
     <div class="grid">
       <a class="card" data-city="Milano" href="https://the-mob-milano.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Milano · Dijital Sistem</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_milano">Milano</span> · <span data-key="meta_digitalsystem">Dijital Sistem</span></span><span class="arrow">↗</span></div>
         <h3>THE MOB Milano</h3>
-        <p>Milano'da bir kokteyl bar için QR menü, rezervasyon, WhatsApp pazarlama ve canlı analitik paneli içeren tam dijital operasyon sistemi demosu.</p>
+        <p data-key="d_mob">Milano'da bir kokteyl bar için QR menü, rezervasyon, WhatsApp pazarlama ve canlı analitik paneli içeren tam dijital operasyon sistemi demosu.</p>
       </a>
       <a class="card" data-city="Bremen" href="https://saas-qr-menu.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Bremen · Kendi Ürünümüz</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Bremen · <span data-key="meta_ownproduct">Kendi Ürünümüz</span></span><span class="arrow">↗</span></div>
         <h3>QR Menü Sistemi</h3>
-        <p>Restoranlar için baskı gerektirmeyen, anında güncellenen online menü — QR kod okutunca telefonda açılan SaaS demosu.</p>
-        <span class="tag">AI Sistemi</span>
+        <p data-key="d_qrmenu">Restoranlar için baskı gerektirmeyen, anında güncellenen online menü — QR kod okutunca telefonda açılan SaaS demosu.</p>
+        <span class="tag" data-key="tag_ai">AI Sistemi</span>
       </a>
     </div>
   </section>
 
   <section class="sector" data-sector="turizm">
-    <div class="sector-head"><h2>Turizm &amp; Seyahat</h2><span class="count">1 proje</span></div>
+    <div class="sector-head"><h2 data-key="sec_turizm_title">Turizm &amp; Seyahat</h2><span class="count" data-key="sec_turizm_count">1 proje</span></div>
     <div class="grid">
       <a class="card" data-city="Alanya" href="https://07travel.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Alanya · Web Sitesi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Alanya · <span data-key="meta_web">Web Sitesi</span></span><span class="arrow">↗</span></div>
         <h3>07 Travel</h3>
-        <p>TÜRSAB onaylı Alanya merkezli seyahat acentesi için Kıbrıs, Kapadokya, Mısır ve Dubai turlarını tanıtan çok dilli site.</p>
+        <p data-key="d_07travel">TÜRSAB onaylı Alanya merkezli seyahat acentesi için Kıbrıs, Kapadokya, Mısır ve Dubai turlarını tanıtan çok dilli site.</p>
       </a>
     </div>
   </section>
 
   <section class="sector" data-sector="kurumsal">
-    <div class="sector-head"><h2>Kurumsal &amp; Ajans</h2><span class="count">2 proje</span></div>
+    <div class="sector-head"><h2 data-key="sec_kurumsal_title">Kurumsal &amp; Ajans</h2><span class="count" data-key="sec_kurumsal_count">2 proje</span></div>
     <div class="grid">
       <a class="card" data-city="Ankara" href="https://kho90.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Ankara · Dernek Sitesi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span>Ankara · <span data-key="meta_assoc">Dernek Sitesi</span></span><span class="arrow">↗</span></div>
         <h3>KHO90</h3>
-        <p>Kara Harp Okulu 1990 mezunları derneği için ortak hafıza arşivi, duyurular ve kontrollü erişimli devre arşivi konsepti.</p>
+        <p data-key="d_kho90">Kara Harp Okulu 1990 mezunları derneği için ortak hafıza arşivi, duyurular ve kontrollü erişimli devre arşivi konsepti.</p>
       </a>
       <a class="card" data-city="Online" href="https://catsy-medya.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · Ajans Sitesi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_agency">Ajans Sitesi</span></span><span class="arrow">↗</span></div>
         <h3>Catsy Medya</h3>
-        <p>Kreatif prodüksiyon ve sosyal medya ajansı için fotoğraf, video prodüksiyon ve performans kreatiflerini öne çıkaran marka sitesi.</p>
+        <p data-key="d_catsy">Kreatif prodüksiyon ve sosyal medya ajansı için fotoğraf, video prodüksiyon ve performans kreatiflerini öne çıkaran marka sitesi.</p>
       </a>
     </div>
   </section>
 
   <section class="sector" data-sector="rehber">
-    <div class="sector-head"><h2>Rehber Platformları</h2><span class="count">4 proje · kendi ürünlerimiz</span></div>
+    <div class="sector-head"><h2 data-key="sec_rehber_title">Rehber Platformları</h2><span class="count" data-key="sec_rehber_count">4 proje · kendi ürünlerimiz</span></div>
     <div class="grid">
       <a class="card" data-city="Online" href="https://fuhrerschein-dusky.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · İçerik Platformu</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_content">İçerik Platformu</span></span><span class="arrow">↗</span></div>
         <h3>Anayol</h3>
-        <p>Almanya'da ehliyet almak isteyen Türkler için teori, pratik ve sözlük içeren kapsamlı rehber platformu.</p>
-        <span class="tag">Kendi Ürünümüz</span>
+        <p data-key="d_anayol">Almanya'da ehliyet almak isteyen Türkler için teori, pratik ve sözlük içeren kapsamlı rehber platformu.</p>
+        <span class="tag" data-key="tag_own">Kendi Ürünümüz</span>
       </a>
       <a class="card" data-city="Online" href="https://sprachcafes.com" target="_blank" rel="noopener">
-        <div class="meta"><span>Almanya Geneli · Rehber</span><span class="arrow">↗</span></div>
+        <div class="meta"><span data-key="meta_sprachcafe">Almanya Geneli · Rehber</span><span class="arrow">↗</span></div>
         <h3>Sprachcafe.com</h3>
-        <p>Almanya'daki ücretsiz dil pratiği buluşmalarını şehre göre listeleyen rehber — Hamburg, Berlin, Stuttgart, Köln ve daha fazlası.</p>
-        <span class="tag">Kendi Ürünümüz</span>
+        <p data-key="d_sprachcafe">Almanya'daki ücretsiz dil pratiği buluşmalarını şehre göre listeleyen rehber — Hamburg, Berlin, Stuttgart, Köln ve daha fazlası.</p>
+        <span class="tag" data-key="tag_own">Kendi Ürünümüz</span>
       </a>
       <a class="card" data-city="Online" href="https://caffe-linguistici-italia.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>İtalya Geneli · Rehber</span><span class="arrow">↗</span></div>
+        <div class="meta"><span data-key="meta_caffelinguistici">İtalya Geneli · Rehber</span><span class="arrow">↗</span></div>
         <h3>Caffe Linguistici Italia</h3>
-        <p>İtalya'da şehre, seviyeye ve dile göre güvenli dil buluşmalarını bir araya getiren kardeş platform.</p>
-        <span class="tag">Kendi Ürünümüz</span>
+        <p data-key="d_caffelinguistici">İtalya'da şehre, seviyeye ve dile göre güvenli dil buluşmalarını bir araya getiren kardeş platform.</p>
+        <span class="tag" data-key="tag_own">Kendi Ürünümüz</span>
       </a>
       <a class="card" data-city="Online" href="https://german-life-helper-web.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · İçerik Platformu</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_content">İçerik Platformu</span></span><span class="arrow">↗</span></div>
         <h3>German Life Helper</h3>
-        <p>Almanya'da yaşamak ve çalışmak için 120'den fazla günlük ifade, A1-B1 sınav hazırlığı ve der/die/das antrenörü.</p>
-        <span class="tag">Kendi Ürünümüz</span>
+        <p data-key="d_glh">Almanya'da yaşamak ve çalışmak için 120'den fazla günlük ifade, A1-B1 sınav hazırlığı ve der/die/das antrenörü.</p>
+        <span class="tag" data-key="tag_own">Kendi Ürünümüz</span>
       </a>
     </div>
   </section>
 
   <section class="sector" data-sector="ai">
-    <div class="sector-head"><h2>AI Destekli Ürünler</h2><span class="count">5 proje · kendi ürünlerimiz</span></div>
+    <div class="sector-head"><h2 data-key="sec_ai_title">AI Destekli Ürünler</h2><span class="count" data-key="sec_ai_count">5 proje · kendi ürünlerimiz</span></div>
     <div class="grid">
       <a class="card" data-city="Online" href="https://autopresence-app.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_ai">AI Sistemi</span></span><span class="arrow">↗</span></div>
         <h3>AutoPresence</h3>
-        <p>İşletmelere soğuk pazarlama için otomatik demo web sitesi üreten, onay sonrası yayına alınan sistem.</p>
-        <span class="tag">AI Sistemi</span>
+        <p data-key="d_autopresence">İşletmelere soğuk pazarlama için otomatik demo web sitesi üreten, onay sonrası yayına alınan sistem.</p>
+        <span class="tag" data-key="tag_ai">AI Sistemi</span>
       </a>
       <a class="card" data-city="Online" href="https://dijital-urun-katalog.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_ai">AI Sistemi</span></span><span class="arrow">↗</span></div>
         <h3>Koleksiyonum</h3>
-        <p>Pazarcı ve antikacılar için ürün fotoğrafını yapay zekâyla kataloğa çeviren, QR ile dijital tezgâh sunan sistem.</p>
-        <span class="tag">AI Sistemi</span>
+        <p data-key="d_koleksiyonum">Pazarcı ve antikacılar için ürün fotoğrafını yapay zekâyla kataloğa çeviren, QR ile dijital tezgâh sunan sistem.</p>
+        <span class="tag" data-key="tag_ai">AI Sistemi</span>
       </a>
       <a class="card" data-city="Online" href="https://gewurzhandel-ai.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_ai">AI Sistemi</span></span><span class="arrow">↗</span></div>
         <h3>Gewürzhandel AI</h3>
-        <p>Baharat ve gıda toptancıları için yapay zekâ destekli dijital katalog ve online sipariş vitrini demosu.</p>
-        <span class="tag">AI Sistemi</span>
+        <p data-key="d_gewurzhandel">Baharat ve gıda toptancıları için yapay zekâ destekli dijital katalog ve online sipariş vitrini demosu.</p>
+        <span class="tag" data-key="tag_ai">AI Sistemi</span>
       </a>
       <a class="card" data-city="Online" href="https://solar.getdigitalguide.com" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_ai">AI Sistemi</span></span><span class="arrow">↗</span></div>
         <h3>Duru Solar</h3>
-        <p>Güneş enerjisi hesaplamalarını basitleştiren, EPC firmaları için yüksek dönüşümlü müşteri adayı üreten simülatör.</p>
-        <span class="tag">AI Sistemi</span>
+        <p data-key="d_durusolar">Güneş enerjisi hesaplamalarını basitleştiren, EPC firmaları için yüksek dönüşümlü müşteri adayı üreten simülatör.</p>
+        <span class="tag" data-key="tag_ai">AI Sistemi</span>
       </a>
       <a class="card" data-city="Online" href="https://leschaco-exception-monitor.vercel.app" target="_blank" rel="noopener">
-        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <div class="meta"><span><span data-key="city_online">Online</span> · <span data-key="meta_ai">AI Sistemi</span></span><span class="arrow">↗</span></div>
         <h3>Leschaco Exception Monitor</h3>
-        <p>Lojistik sevkiyatlarda istisna ve gecikmeleri tek panelde izleyen, erken uyarı veren kontrol sistemi demosu.</p>
-        <span class="tag">AI Sistemi</span>
+        <p data-key="d_leschaco">Lojistik sevkiyatlarda istisna ve gecikmeleri tek panelde izleyen, erken uyarı veren kontrol sistemi demosu.</p>
+        <span class="tag" data-key="tag_ai">AI Sistemi</span>
       </a>
     </div>
   </section>
@@ -401,17 +417,194 @@
 
 <footer>
   <div class="wrap">
-    <h2>Sıradaki dijital kimlik sizinki olsun.</h2>
-    <p>Web sitesi, AI otomasyonu, SEO veya WhatsApp lead sistemi — hangisi ilginizi çektiyse konuşalım.</p>
-    <a class="wa-cta" href="https://wa.me/message" target="_blank" rel="noopener">WhatsApp'tan Yazın →</a>
+    <h2 data-key="foot_h2">Sıradaki dijital kimlik sizinki olsun.</h2>
+    <p data-key="foot_p">Web sitesi, AI otomasyonu, SEO veya WhatsApp lead sistemi — hangisi ilginizi çektiyse konuşalım.</p>
+    <a class="wa-cta" href="https://wa.me/message" target="_blank" rel="noopener"><span data-key="foot_cta">WhatsApp'tan Yazın →</span></a>
     <div class="foot-bottom">
-      <span>Digital Guide — Web Tasarım · AI Otomasyon · SEO</span>
+      <span data-key="foot_bottom1">Digital Guide — Web Tasarım · AI Otomasyon · SEO</span>
       <span>getdigitalguide.com</span>
     </div>
   </div>
 </footer>
 
 <script>
+  const translations = {
+    tr: {
+      doc_title: "Digital Guide — Proje Rehberi",
+      doc_desc: "Digital Guide'ın hazırladığı gerçek web tasarım, AI otomasyon ve dijital pazarlama projelerinden bir seçki. Sektöre göre filtreleyin.",
+      wordmark_small: "Proje Rehberi",
+      hero_eyebrow: "Tüm projeler canlı · son kontrol Ağustos 2026",
+      hero_h1: "Web sitesi, <em>AI otomasyonu</em> ve dijital pazarlamada gerçekleştirdiklerimiz.",
+      hero_sub: "Almanya, İtalya ve Türkiye'de gerçek işletmeler için kurduğumuz web siteleri ve kendi geliştirdiğimiz AI ürünlerinden bir seçki. Sektöre göre filtreleyin, ne yaptığımızı görün.",
+      stat_proje: "Proje", stat_sektor: "Sektör", stat_sehir: "Şehir",
+      tab_all: "Tümü", tab_berber: "Kuaför &amp; Berber", tab_emlak: "Emlak &amp; Finans",
+      tab_lojistik: "Lojistik &amp; Nakliye", tab_gastro: "Gastronomi &amp; Mekan", tab_turizm: "Turizm",
+      tab_kurumsal: "Kurumsal &amp; Ajans", tab_rehber: "Rehber Platformları", tab_ai: "AI Destekli Ürünler",
+      city_label: "Şehir:", city_all: "Tümü", city_milano: "Milano", city_online: "Online",
+      sec_berber_title: "Kuaför &amp; Berber Salonları", sec_berber_count: "2 proje",
+      sec_emlak_title: "Emlak &amp; Finans Danışmanlığı", sec_emlak_count: "2 proje",
+      sec_lojistik_title: "Lojistik &amp; Nakliye", sec_lojistik_count: "2 proje",
+      sec_gastro_title: "Gastronomi &amp; Mekanlar", sec_gastro_count: "2 proje",
+      sec_turizm_title: "Turizm &amp; Seyahat", sec_turizm_count: "1 proje",
+      sec_kurumsal_title: "Kurumsal &amp; Ajans", sec_kurumsal_count: "2 proje",
+      sec_rehber_title: "Rehber Platformları", sec_rehber_count: "4 proje · kendi ürünlerimiz",
+      sec_ai_title: "AI Destekli Ürünler", sec_ai_count: "5 proje · kendi ürünlerimiz",
+      meta_brandweb: "Marka &amp; Web", meta_web: "Web Sitesi", meta_corporate: "Kurumsal Site",
+      meta_ownproduct: "Kendi Ürünümüz", meta_digitalsystem: "Dijital Sistem", meta_assoc: "Dernek Sitesi",
+      meta_agency: "Ajans Sitesi", meta_content: "İçerik Platformu", meta_ai: "AI Sistemi",
+      meta_sprachcafe: "Almanya Geneli · Rehber", meta_caffelinguistici: "İtalya Geneli · Rehber",
+      tag_ai: "AI Sistemi", tag_own: "Kendi Ürünümüz",
+      d_gulcan: "Bremen-Hemelingen'de kişisel kadın, erkek ve çocuk kuaförü. Saç kesimi, renk, styling ve sakal bakımı — WhatsApp veya telefonla randevu.",
+      d_mstyle: "Bremen-Neustadt'ta erkek kuaförü. WhatsApp ve telefon üzerinden hızlı randevu, çocuk saç kesimi dahil hizmet listesi.",
+      d_saray: "Bremen'de Türkçe konuşan emlak danışmanı için satılık/kiralık ilan vitrini ve Türkiye'den gelen ailelere özel rehber sayfaları.",
+      d_tezcan: "Baufinanzierung, sigorta ve emlak danışmanlığı sunan büro için 20+ yıllık tecrübeyi ve 2.500'den fazla müşteriyi öne çıkaran kurumsal site.",
+      d_keskin: "Würzburg merkezli nakliye firması için soğuk zincir, yük ve inşaat malzemesi taşımacılığını anlatan, teklif formlu kurumsal site.",
+      d_logistikradar: "Spedisyon ve gümrük acenteleri için liman riski erken uyarı sistemi — müşteriler sormadan önce günlük WhatsApp ve e-posta brifingi.",
+      d_mob: "Milano'da bir kokteyl bar için QR menü, rezervasyon, WhatsApp pazarlama ve canlı analitik paneli içeren tam dijital operasyon sistemi demosu.",
+      d_qrmenu: "Restoranlar için baskı gerektirmeyen, anında güncellenen online menü — QR kod okutunca telefonda açılan SaaS demosu.",
+      d_07travel: "TÜRSAB onaylı Alanya merkezli seyahat acentesi için Kıbrıs, Kapadokya, Mısır ve Dubai turlarını tanıtan çok dilli site.",
+      d_kho90: "Kara Harp Okulu 1990 mezunları derneği için ortak hafıza arşivi, duyurular ve kontrollü erişimli devre arşivi konsepti.",
+      d_catsy: "Kreatif prodüksiyon ve sosyal medya ajansı için fotoğraf, video prodüksiyon ve performans kreatiflerini öne çıkaran marka sitesi.",
+      d_anayol: "Almanya'da ehliyet almak isteyen Türkler için teori, pratik ve sözlük içeren kapsamlı rehber platformu.",
+      d_sprachcafe: "Almanya'daki ücretsiz dil pratiği buluşmalarını şehre göre listeleyen rehber — Hamburg, Berlin, Stuttgart, Köln ve daha fazlası.",
+      d_caffelinguistici: "İtalya'da şehre, seviyeye ve dile göre güvenli dil buluşmalarını bir araya getiren kardeş platform.",
+      d_glh: "Almanya'da yaşamak ve çalışmak için 120'den fazla günlük ifade, A1-B1 sınav hazırlığı ve der/die/das antrenörü.",
+      d_autopresence: "İşletmelere soğuk pazarlama için otomatik demo web sitesi üreten, onay sonrası yayına alınan sistem.",
+      d_koleksiyonum: "Pazarcı ve antikacılar için ürün fotoğrafını yapay zekâyla kataloğa çeviren, QR ile dijital tezgâh sunan sistem.",
+      d_gewurzhandel: "Baharat ve gıda toptancıları için yapay zekâ destekli dijital katalog ve online sipariş vitrini demosu.",
+      d_durusolar: "Güneş enerjisi hesaplamalarını basitleştiren, EPC firmaları için yüksek dönüşümlü müşteri adayı üreten simülatör.",
+      d_leschaco: "Lojistik sevkiyatlarda istisna ve gecikmeleri tek panelde izleyen, erken uyarı veren kontrol sistemi demosu.",
+      foot_h2: "Sıradaki dijital kimlik sizinki olsun.",
+      foot_p: "Web sitesi, AI otomasyonu, SEO veya WhatsApp lead sistemi — hangisi ilginizi çektiyse konuşalım.",
+      foot_cta: "WhatsApp'tan Yazın →",
+      foot_bottom1: "Digital Guide — Web Tasarım · AI Otomasyon · SEO"
+    },
+    en: {
+      doc_title: "Digital Guide — Project Guide",
+      doc_desc: "A selection of real web design, AI automation, and digital marketing projects by Digital Guide. Filter by sector.",
+      wordmark_small: "Project Guide",
+      hero_eyebrow: "All projects live · last checked August 2026",
+      hero_h1: "What we've built in web design, <em>AI automation</em>, and digital marketing.",
+      hero_sub: "A selection of websites we've built for real businesses across Germany, Italy, and Turkey, plus AI products we've developed ourselves. Filter by sector to see what we do.",
+      stat_proje: "Projects", stat_sektor: "Sectors", stat_sehir: "Cities",
+      tab_all: "All", tab_berber: "Barbers &amp; Salons", tab_emlak: "Real Estate &amp; Finance",
+      tab_lojistik: "Logistics &amp; Transport", tab_gastro: "Restaurants &amp; Venues", tab_turizm: "Tourism",
+      tab_kurumsal: "Corporate &amp; Agency", tab_rehber: "Guide Platforms", tab_ai: "AI Products",
+      city_label: "City:", city_all: "All", city_milano: "Milan", city_online: "Online",
+      sec_berber_title: "Barbershops &amp; Salons", sec_berber_count: "2 projects",
+      sec_emlak_title: "Real Estate &amp; Financial Advisory", sec_emlak_count: "2 projects",
+      sec_lojistik_title: "Logistics &amp; Transport", sec_lojistik_count: "2 projects",
+      sec_gastro_title: "Restaurants &amp; Venues", sec_gastro_count: "2 projects",
+      sec_turizm_title: "Tourism &amp; Travel", sec_turizm_count: "1 project",
+      sec_kurumsal_title: "Corporate &amp; Agency", sec_kurumsal_count: "2 projects",
+      sec_rehber_title: "Guide Platforms", sec_rehber_count: "4 projects · our own products",
+      sec_ai_title: "AI-Powered Products", sec_ai_count: "5 projects · our own products",
+      meta_brandweb: "Brand &amp; Web", meta_web: "Website", meta_corporate: "Corporate Site",
+      meta_ownproduct: "Our Product", meta_digitalsystem: "Digital System", meta_assoc: "Association Site",
+      meta_agency: "Agency Site", meta_content: "Content Platform", meta_ai: "AI System",
+      meta_sprachcafe: "Across Germany · Guide", meta_caffelinguistici: "Across Italy · Guide",
+      tag_ai: "AI System", tag_own: "Our Product",
+      d_gulcan: "A personal women's, men's, and kids' salon in Bremen-Hemelingen. Haircuts, color, styling, and beard grooming — book by WhatsApp or phone.",
+      d_mstyle: "A men's barbershop in Bremen-Neustadt. Fast booking by WhatsApp or phone, with kids' haircuts on the service list.",
+      d_saray: "A listings showcase for a Turkish-speaking estate agent in Bremen, plus dedicated guide pages for families relocating from Turkey.",
+      d_tezcan: "A corporate site for a financing, insurance, and real estate advisory firm, highlighting 20+ years of experience and 2,500+ clients.",
+      d_keskin: "A corporate site with a quote form for a Würzburg-based transport company, covering cold-chain, freight, and construction-material hauling.",
+      d_logistikradar: "An early-warning system for freight forwarders and customs agents — a daily WhatsApp and email briefing on port risk, before clients even ask.",
+      d_mob: "A full digital operations demo for a cocktail bar in Milan — QR menu, reservations, WhatsApp marketing, and a live analytics dashboard.",
+      d_qrmenu: "A print-free, instantly updatable online menu for restaurants — opens on the phone the moment guests scan the QR code.",
+      d_07travel: "A multilingual site for a TÜRSAB-certified travel agency in Alanya, presenting tours to Cyprus, Cappadocia, Egypt, and Dubai.",
+      d_kho90: "A shared-memory archive for the Turkish Military Academy class of 1990's alumni association — announcements and an access-controlled class archive.",
+      d_catsy: "A brand site for a creative production and social media agency, spotlighting photo, video production, and performance creative work.",
+      d_anayol: "A comprehensive guide platform for Turkish speakers getting a driving license in Germany — theory, practice, and a glossary.",
+      d_sprachcafe: "A guide to free language-exchange meetups across Germany, listed by city — Hamburg, Berlin, Stuttgart, Cologne, and more.",
+      d_caffelinguistici: "A sister platform bringing together safe language meetups across Italy, filterable by city, level, and language.",
+      d_glh: "120+ everyday phrases, A1-B1 exam prep, and a der/die/das trainer for living and working in Germany.",
+      d_autopresence: "A system that generates a demo website for cold-outreach to businesses, published live once they approve it.",
+      d_koleksiyonum: "Turns a product photo into a catalog entry with AI for market vendors and antique dealers, with a QR-code digital stall.",
+      d_gewurzhandel: "An AI-powered digital catalog and online ordering demo for spice and food wholesalers.",
+      d_durusolar: "A simulator that simplifies solar energy calculations and generates high-converting leads for EPC companies.",
+      d_leschaco: "A control-panel demo that tracks shipment exceptions and delays in one place, with early-warning alerts.",
+      foot_h2: "Let the next digital identity be yours.",
+      foot_p: "Website, AI automation, SEO, or a WhatsApp lead system — whichever interests you, let's talk.",
+      foot_cta: "Message us on WhatsApp →",
+      foot_bottom1: "Digital Guide — Web Design · AI Automation · SEO"
+    },
+    de: {
+      doc_title: "Digital Guide — Projektverzeichnis",
+      doc_desc: "Eine Auswahl echter Webdesign-, KI-Automatisierungs- und Digitalmarketing-Projekte von Digital Guide. Nach Branche filtern.",
+      wordmark_small: "Projektverzeichnis",
+      hero_eyebrow: "Alle Projekte live · zuletzt geprüft August 2026",
+      hero_h1: "Was wir in Webdesign, <em>KI-Automatisierung</em> und digitalem Marketing umgesetzt haben.",
+      hero_sub: "Eine Auswahl an Websites, die wir für echte Unternehmen in Deutschland, Italien und der Türkei gebaut haben, sowie eigens entwickelte KI-Produkte. Nach Branche filtern und sehen, was wir machen.",
+      stat_proje: "Projekte", stat_sektor: "Branchen", stat_sehir: "Städte",
+      tab_all: "Alle", tab_berber: "Friseure &amp; Barbershops", tab_emlak: "Immobilien &amp; Finanzen",
+      tab_lojistik: "Logistik &amp; Transport", tab_gastro: "Gastronomie &amp; Locations", tab_turizm: "Tourismus",
+      tab_kurumsal: "Unternehmen &amp; Agentur", tab_rehber: "Ratgeber-Plattformen", tab_ai: "KI-Produkte",
+      city_label: "Stadt:", city_all: "Alle", city_milano: "Mailand", city_online: "Online",
+      sec_berber_title: "Friseure &amp; Barbershops", sec_berber_count: "2 Projekte",
+      sec_emlak_title: "Immobilien &amp; Finanzberatung", sec_emlak_count: "2 Projekte",
+      sec_lojistik_title: "Logistik &amp; Transport", sec_lojistik_count: "2 Projekte",
+      sec_gastro_title: "Gastronomie &amp; Locations", sec_gastro_count: "2 Projekte",
+      sec_turizm_title: "Tourismus &amp; Reisen", sec_turizm_count: "1 Projekt",
+      sec_kurumsal_title: "Unternehmen &amp; Agentur", sec_kurumsal_count: "2 Projekte",
+      sec_rehber_title: "Ratgeber-Plattformen", sec_rehber_count: "4 Projekte · eigene Produkte",
+      sec_ai_title: "KI-gestützte Produkte", sec_ai_count: "5 Projekte · eigene Produkte",
+      meta_brandweb: "Marke &amp; Web", meta_web: "Website", meta_corporate: "Unternehmenswebsite",
+      meta_ownproduct: "Eigenes Produkt", meta_digitalsystem: "Digitales System", meta_assoc: "Vereinswebsite",
+      meta_agency: "Agenturwebsite", meta_content: "Content-Plattform", meta_ai: "KI-System",
+      meta_sprachcafe: "Deutschlandweit · Ratgeber", meta_caffelinguistici: "Italienweit · Ratgeber",
+      tag_ai: "KI-System", tag_own: "Eigenes Produkt",
+      d_gulcan: "Persönlicher Damen-, Herren- und Kinderfriseur in Bremen-Hemelingen. Haarschnitt, Farbe, Styling und Bartpflege — Termin per WhatsApp oder Telefon.",
+      d_mstyle: "Herrenfriseur in Bremen-Neustadt. Schnelle Terminbuchung per WhatsApp oder Telefon, Kinderhaarschnitte inklusive.",
+      d_saray: "Angebotsvitrine für einen türkischsprachigen Immobilienmakler in Bremen, mit eigenen Ratgeberseiten für Familien aus der Türkei.",
+      d_tezcan: "Unternehmenswebsite für ein Büro für Baufinanzierung, Versicherung und Immobilien — mit 20+ Jahren Erfahrung und über 2.500 Kunden.",
+      d_keskin: "Unternehmenswebsite mit Angebotsformular für ein Transportunternehmen aus Würzburg — Kühlkette, Stückgut und Baustofftransporte.",
+      d_logistikradar: "Frühwarnsystem für Spediteure und Zollagenturen — tägliches WhatsApp- und E-Mail-Briefing zu Hafenrisiken, bevor Kunden nachfragen.",
+      d_mob: "Vollständige digitale Betriebssystem-Demo für eine Cocktailbar in Mailand — QR-Menü, Reservierung, WhatsApp-Marketing und Live-Analytics.",
+      d_qrmenu: "Druckfreie, sofort aktualisierbare Online-Speisekarte für Restaurants — öffnet sich auf dem Handy nach dem Scannen des QR-Codes.",
+      d_07travel: "Mehrsprachige Website für ein TÜRSAB-zertifiziertes Reisebüro in Alanya — Touren nach Zypern, Kappadokien, Ägypten und Dubai.",
+      d_kho90: "Gemeinsames Erinnerungsarchiv für den Ehemaligenverein des Jahrgangs 1990 der Türkischen Militärakademie — Ankündigungen und zugangsgeschütztes Archiv.",
+      d_catsy: "Markenwebsite für eine Kreativproduktions- und Social-Media-Agentur — Foto, Videoproduktion und Performance-Creatives im Fokus.",
+      d_anayol: "Umfassende Ratgeber-Plattform für türkischsprachige Führerscheinbewerber in Deutschland — Theorie, Praxis und Glossar.",
+      d_sprachcafe: "Ratgeber für kostenlose Sprachtreffs in Deutschland, sortiert nach Stadt — Hamburg, Berlin, Stuttgart, Köln und mehr.",
+      d_caffelinguistici: "Schwesterplattform mit sicheren Sprachtreffs in Italien, filterbar nach Stadt, Niveau und Sprache.",
+      d_glh: "120+ Alltagsphrasen, A1-B1-Prüfungsvorbereitung und ein der/die/das-Trainer fürs Leben und Arbeiten in Deutschland.",
+      d_autopresence: "System, das für Kaltakquise automatisch eine Demo-Website erstellt — nach Freigabe des Kunden live geschaltet.",
+      d_koleksiyonum: "Verwandelt Produktfotos per KI in Katalogeinträge für Marktverkäufer und Antiquitätenhändler — mit digitalem Stand per QR-Code.",
+      d_gewurzhandel: "KI-gestützter digitaler Katalog und Online-Bestellvitrine für Gewürz- und Lebensmittelgroßhändler — als Demo.",
+      d_durusolar: "Simulator, der Solarenergie-Berechnungen vereinfacht und für EPC-Unternehmen konversionsstarke Leads generiert.",
+      d_leschaco: "Demo eines Kontrollsystems, das Sendungsausnahmen und Verzögerungen an einem Ort überwacht — mit Frühwarnung.",
+      foot_h2: "Die nächste digitale Identität gehört Ihnen.",
+      foot_p: "Website, KI-Automatisierung, SEO oder WhatsApp-Lead-System — worauf Sie Lust haben, lassen Sie uns reden.",
+      foot_cta: "Auf WhatsApp schreiben →",
+      foot_bottom1: "Digital Guide — Webdesign · KI-Automatisierung · SEO"
+    }
+  };
+
+  function applyLang(lang){
+    const dict = translations[lang] || translations.tr;
+    document.documentElement.lang = lang;
+    document.title = dict.doc_title;
+    document.querySelector('meta[name="description"]').setAttribute('content', dict.doc_desc);
+    document.querySelectorAll('[data-key]').forEach(el=>{
+      const key = el.getAttribute('data-key');
+      if(dict[key] !== undefined) el.innerHTML = dict[key];
+    });
+    document.querySelectorAll('#langSwitch button').forEach(b=>{
+      b.classList.toggle('active', b.dataset.lang === lang);
+    });
+    localStorage.setItem('dg_lang', lang);
+  }
+
+  document.querySelectorAll('#langSwitch button').forEach(btn=>{
+    btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
+  });
+
+  const savedLang = localStorage.getItem('dg_lang');
+  const browserLang = (navigator.language || 'tr').slice(0,2);
+  const initialLang = savedLang || (translations[browserLang] ? browserLang : 'tr');
+  applyLang(initialLang);
+
   const tabs = document.querySelectorAll('.tab');
   const cityBtns = document.querySelectorAll('.city button');
   const sectors = document.querySelectorAll('.sector');
