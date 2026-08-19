@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Guide — Proje Rehberi</title>
+<meta name="description" content="Digital Guide'ın hazırladığı gerçek web tasarım, AI otomasyon ve dijital pazarlama projelerinden bir seçki. Sektöre göre filtreleyin.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22%231B1F2A%22/><text x=%2250%22 y=%2268%22 font-size=%2258%22 font-family=%22Georgia%22 fill=%22%23FFC93C%22 text-anchor=%22middle%22>D</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2EFE7;
+    --paper-raise:#FAF8F2;
+    --ink:#1B1F2A;
+    --ink-soft:#5B5F6B;
+    --line:#D9D2C0;
+    --accent:#FFC93C;
+    --accent-ink:#3D2E00;
+    --live:#2E7D5B;
+    --radius:2px;
+    --display:'Space Grotesk',system-ui,sans-serif;
+    --body:'IBM Plex Sans',system-ui,sans-serif;
+    --mono:'IBM Plex Mono',ui-monospace,monospace;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:var(--body);
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* ---------- header ---------- */
+  header.site{
+    position:sticky;top:0;z-index:40;
+    background:rgba(242,239,231,.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+  }
+  .site-bar{display:flex;align-items:center;justify-content:space-between;padding:16px 28px;max-width:1180px;margin:0 auto;}
+  .wordmark{display:flex;align-items:baseline;gap:8px;font-family:var(--display);font-weight:700;font-size:1.05rem;letter-spacing:.01em;text-decoration:none;}
+  .wordmark small{font-family:var(--mono);font-weight:400;font-size:.65rem;color:var(--ink-soft);letter-spacing:.14em;text-transform:uppercase;}
+  .site-cta{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;
+    border:1px solid var(--ink);padding:9px 16px;text-decoration:none;color:var(--ink);
+    transition:background .15s ease,color .15s ease;
+  }
+  .site-cta:hover{background:var(--ink);color:var(--paper-raise);}
+
+  /* ---------- hero ---------- */
+  .hero{padding:76px 0 40px;}
+  .eyebrow{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-soft);display:flex;align-items:center;gap:10px;margin-bottom:22px;
+  }
+  .eyebrow .dot{width:6px;height:6px;background:var(--live);border-radius:50%;flex:none;}
+  h1{
+    font-family:var(--display);font-weight:700;font-size:clamp(2.1rem,4.4vw,3.6rem);
+    line-height:1.06;letter-spacing:-.01em;margin:0 0 22px;max-width:14ch;
+  }
+  h1 em{font-style:normal;color:var(--ink-soft);}
+  .hero-sub{font-size:1.05rem;line-height:1.6;color:var(--ink-soft);max-width:56ch;margin:0 0 40px;}
+
+  .stat-row{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);}
+  .stat{
+    padding:20px 22px;border-right:1px solid var(--line);background:var(--paper-raise);
+    position:relative;
+  }
+  .stat:last-child{border-right:none;}
+  .stat .n{font-family:var(--display);font-weight:700;font-size:2.1rem;line-height:1;}
+  .stat .l{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin-top:8px;display:block;}
+
+  /* ---------- filter tabs ---------- */
+  .filters{
+    position:sticky;top:57px;z-index:30;
+    background:var(--paper);
+    padding:22px 0 14px;
+    border-bottom:1px solid var(--line);
+  }
+  .tab-row{display:flex;flex-wrap:wrap;gap:8px;}
+  .tab{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.05em;
+    padding:8px 14px;border:1px solid var(--line);background:var(--paper-raise);
+    cursor:pointer;color:var(--ink-soft);white-space:nowrap;
+    transition:border-color .15s ease,color .15s ease,background .15s ease;
+  }
+  .tab:hover{border-color:var(--ink);color:var(--ink);}
+  .tab.active{background:var(--ink);border-color:var(--ink);color:var(--accent);}
+  .city-row{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;}
+  .city{
+    font-family:var(--mono);font-size:.64rem;letter-spacing:.05em;color:var(--ink-soft);
+    padding:4px 0;
+  }
+  .city button{
+    font:inherit;border:none;background:none;color:inherit;cursor:pointer;padding:2px 6px;
+    text-transform:uppercase;
+  }
+  .city button.active{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-color:var(--accent);text-decoration-thickness:2px;}
+
+  /* ---------- sectors / cards ---------- */
+  main{padding:44px 0 100px;}
+  .sector{margin-bottom:56px;}
+  .sector.is-hidden{display:none;}
+  .sector-head{
+    display:flex;align-items:baseline;gap:14px;margin-bottom:18px;
+    border-bottom:1px solid var(--line);padding-bottom:10px;
+  }
+  .sector-head h2{
+    font-family:var(--display);font-weight:600;font-size:1.15rem;margin:0;
+  }
+  .sector-head .count{font-family:var(--mono);font-size:.72rem;color:var(--ink-soft);}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;}
+  .card{
+    position:relative;
+    background:var(--paper-raise);
+    border:1px solid var(--line);
+    border-top:none;
+    padding:22px 20px 20px;
+    text-decoration:none;color:var(--ink);
+    display:flex;flex-direction:column;gap:10px;
+    transition:transform .15s ease,box-shadow .15s ease,border-color .15s ease;
+  }
+  .card::before{
+    content:"";
+    position:absolute;top:-1px;left:0;right:0;height:3px;
+    background:repeating-linear-gradient(90deg,var(--line) 0 6px,transparent 6px 12px);
+  }
+  .card::after{
+    content:"";
+    position:absolute;top:-4px;left:16px;width:7px;height:7px;border-radius:50%;
+    background:var(--paper);border:1px solid var(--line);
+  }
+  .card:hover{
+    transform:translateY(-3px);
+    border-color:var(--ink);
+    box-shadow:5px 5px 0 var(--ink);
+  }
+  .card .meta{
+    font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+    color:var(--ink-soft);display:flex;justify-content:space-between;gap:8px;
+  }
+  .card .meta .arrow{color:var(--ink);font-family:var(--body);font-size:.95rem;transition:transform .15s ease;}
+  .card:hover .meta .arrow{transform:translate(2px,-2px);}
+  .card h3{font-family:var(--display);font-weight:600;font-size:1.12rem;margin:0;line-height:1.25;}
+  .card p{font-size:.88rem;line-height:1.55;color:var(--ink-soft);margin:0;flex:1;}
+  .card .tag{
+    align-self:flex-start;font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent-ink);background:var(--accent);padding:3px 8px;
+  }
+
+  /* ---------- footer / cta ---------- */
+  footer{
+    background:var(--ink);color:var(--paper-raise);padding:64px 0 40px;
+  }
+  footer h2{
+    font-family:var(--display);font-weight:700;font-size:clamp(1.6rem,3.4vw,2.4rem);
+    margin:0 0 16px;max-width:16ch;
+  }
+  footer p{color:#B9BCC5;max-width:48ch;line-height:1.6;margin:0 0 28px;}
+  .wa-cta{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;
+    background:var(--accent);color:var(--accent-ink);padding:13px 22px;text-decoration:none;
+    transition:transform .15s ease;
+  }
+  .wa-cta:hover{transform:translate(3px,-3px);}
+  .foot-bottom{
+    margin-top:56px;padding-top:22px;border-top:1px solid #33384A;
+    font-family:var(--mono);font-size:.66rem;letter-spacing:.06em;color:#7A7E8A;
+    display:flex;flex-wrap:wrap;gap:8px;justify-content:space-between;
+  }
+
+  @media (max-width:640px){
+    .stat-row{grid-template-columns:1fr;}
+    .stat{border-right:none;border-bottom:1px solid var(--line);}
+    .stat:last-child{border-bottom:none;}
+    .filters{top:53px;}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none !important;scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="site-bar">
+    <a href="#top" class="wordmark">Digital Guide <small>Proje Rehberi</small></a>
+    <a class="site-cta" href="https://wa.me/message" target="_blank" rel="noopener">WhatsApp</a>
+  </div>
+</header>
+
+<div class="wrap">
+  <section class="hero" id="top">
+    <p class="eyebrow"><span class="dot"></span>Tüm projeler canlı · son kontrol Ağustos 2026</p>
+    <h1>Web sitesi, <em>AI otomasyonu</em> ve dijital pazarlamada gerçekleştirdiklerimiz.</h1>
+    <p class="hero-sub">Almanya, İtalya ve Türkiye'de gerçek işletmeler için kurduğumuz web siteleri ve kendi geliştirdiğimiz AI ürünlerinden bir seçki. Sektöre göre filtreleyin, ne yaptığımızı görün.</p>
+    <div class="stat-row">
+      <div class="stat"><span class="n">20</span><span class="l">Proje</span></div>
+      <div class="stat"><span class="n">8</span><span class="l">Sektör</span></div>
+      <div class="stat"><span class="n">5</span><span class="l">Şehir</span></div>
+    </div>
+  </section>
+</div>
+
+<div class="filters">
+  <div class="wrap">
+    <div class="tab-row" id="sectorTabs">
+      <button class="tab active" data-sector="all">Tümü · 20</button>
+      <button class="tab" data-sector="berber">Kuaför &amp; Berber · 2</button>
+      <button class="tab" data-sector="emlak">Emlak &amp; Finans · 2</button>
+      <button class="tab" data-sector="lojistik">Lojistik &amp; Nakliye · 2</button>
+      <button class="tab" data-sector="gastro">Gastronomi &amp; Mekan · 2</button>
+      <button class="tab" data-sector="turizm">Turizm · 1</button>
+      <button class="tab" data-sector="kurumsal">Kurumsal &amp; Ajans · 2</button>
+      <button class="tab" data-sector="rehber">Rehber Platformları · 4</button>
+      <button class="tab" data-sector="ai">AI Destekli Ürünler · 5</button>
+    </div>
+    <div class="city-row" id="cityRow">
+      <span class="city">Şehir: </span>
+      <span class="city"><button class="active" data-city="all">Tümü</button></span>
+      <span class="city"><button data-city="Bremen">Bremen</button></span>
+      <span class="city"><button data-city="Würzburg">Würzburg</button></span>
+      <span class="city"><button data-city="Milano">Milano</button></span>
+      <span class="city"><button data-city="Alanya">Alanya</button></span>
+      <span class="city"><button data-city="Ankara">Ankara</button></span>
+      <span class="city"><button data-city="Online">Online</button></span>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <section class="sector" data-sector="berber">
+    <div class="sector-head"><h2>Kuaför &amp; Berber Salonları</h2><span class="count">2 proje</span></div>
+    <div class="grid">
+      <a class="card" data-city="Bremen" href="https://gulcan.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Bremen · Marka &amp; Web</span><span class="arrow">↗</span></div>
+        <h3>Gülcan's Frisör</h3>
+        <p>Bremen-Hemelingen'de kişisel kadın, erkek ve çocuk kuaförü. Saç kesimi, renk, styling ve sakal bakımı — WhatsApp veya telefonla randevu.</p>
+      </a>
+      <a class="card" data-city="Bremen" href="https://m-style-barbershop-drab.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Bremen · Web Sitesi</span><span class="arrow">↗</span></div>
+        <h3>M Style Barbershop</h3>
+        <p>Bremen-Neustadt'ta erkek kuaförü. WhatsApp ve telefon üzerinden hızlı randevu, çocuk saç kesimi dahil hizmet listesi.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="sector" data-sector="emlak">
+    <div class="sector-head"><h2>Emlak &amp; Finans Danışmanlığı</h2><span class="count">2 proje</span></div>
+    <div class="grid">
+      <a class="card" data-city="Bremen" href="https://saray-emlak.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Bremen · Web Sitesi</span><span class="arrow">↗</span></div>
+        <h3>Saray Emlak</h3>
+        <p>Bremen'de Türkçe konuşan emlak danışmanı için satılık/kiralık ilan vitrini ve Türkiye'den gelen ailelere özel rehber sayfaları.</p>
+      </a>
+      <a class="card" data-city="Bremen" href="https://maklerbuero-tezcan.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Bremen · Web Sitesi</span><span class="arrow">↗</span></div>
+        <h3>Maklerbüro Tezcan</h3>
+        <p>Baufinanzierung, sigorta ve emlak danışmanlığı sunan büro için 20+ yıllık tecrübeyi ve 2.500'den fazla müşteriyi öne çıkaran kurumsal site.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="sector" data-sector="lojistik">
+    <div class="sector-head"><h2>Lojistik &amp; Nakliye</h2><span class="count">2 proje</span></div>
+    <div class="grid">
+      <a class="card" data-city="Würzburg" href="https://keskin-transporte.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Würzburg · Kurumsal Site</span><span class="arrow">↗</span></div>
+        <h3>Keskin Transporte</h3>
+        <p>Würzburg merkezli nakliye firması için soğuk zincir, yük ve inşaat malzemesi taşımacılığını anlatan, teklif formlu kurumsal site.</p>
+      </a>
+      <a class="card" data-city="Bremen" href="https://logistik-radar.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Bremen · Kendi Ürünümüz</span><span class="arrow">↗</span></div>
+        <h3>Logistik Radar</h3>
+        <p>Spedisyon ve gümrük acenteleri için liman riski erken uyarı sistemi — müşteriler sormadan önce günlük WhatsApp ve e-posta brifingi.</p>
+        <span class="tag">AI Sistemi</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sector" data-sector="gastro">
+    <div class="sector-head"><h2>Gastronomi &amp; Mekanlar</h2><span class="count">2 proje</span></div>
+    <div class="grid">
+      <a class="card" data-city="Milano" href="https://the-mob-milano.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Milano · Dijital Sistem</span><span class="arrow">↗</span></div>
+        <h3>THE MOB Milano</h3>
+        <p>Milano'da bir kokteyl bar için QR menü, rezervasyon, WhatsApp pazarlama ve canlı analitik paneli içeren tam dijital operasyon sistemi demosu.</p>
+      </a>
+      <a class="card" data-city="Bremen" href="https://saas-qr-menu.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Bremen · Kendi Ürünümüz</span><span class="arrow">↗</span></div>
+        <h3>QR Menü Sistemi</h3>
+        <p>Restoranlar için baskı gerektirmeyen, anında güncellenen online menü — QR kod okutunca telefonda açılan SaaS demosu.</p>
+        <span class="tag">AI Sistemi</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sector" data-sector="turizm">
+    <div class="sector-head"><h2>Turizm &amp; Seyahat</h2><span class="count">1 proje</span></div>
+    <div class="grid">
+      <a class="card" data-city="Alanya" href="https://07travel.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Alanya · Web Sitesi</span><span class="arrow">↗</span></div>
+        <h3>07 Travel</h3>
+        <p>TÜRSAB onaylı Alanya merkezli seyahat acentesi için Kıbrıs, Kapadokya, Mısır ve Dubai turlarını tanıtan çok dilli site.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="sector" data-sector="kurumsal">
+    <div class="sector-head"><h2>Kurumsal &amp; Ajans</h2><span class="count">2 proje</span></div>
+    <div class="grid">
+      <a class="card" data-city="Ankara" href="https://kho90.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Ankara · Dernek Sitesi</span><span class="arrow">↗</span></div>
+        <h3>KHO90</h3>
+        <p>Kara Harp Okulu 1990 mezunları derneği için ortak hafıza arşivi, duyurular ve kontrollü erişimli devre arşivi konsepti.</p>
+      </a>
+      <a class="card" data-city="Online" href="https://catsy-medya.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · Ajans Sitesi</span><span class="arrow">↗</span></div>
+        <h3>Catsy Medya</h3>
+        <p>Kreatif prodüksiyon ve sosyal medya ajansı için fotoğraf, video prodüksiyon ve performans kreatiflerini öne çıkaran marka sitesi.</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="sector" data-sector="rehber">
+    <div class="sector-head"><h2>Rehber Platformları</h2><span class="count">4 proje · kendi ürünlerimiz</span></div>
+    <div class="grid">
+      <a class="card" data-city="Online" href="https://fuhrerschein-dusky.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · İçerik Platformu</span><span class="arrow">↗</span></div>
+        <h3>Anayol</h3>
+        <p>Almanya'da ehliyet almak isteyen Türkler için teori, pratik ve sözlük içeren kapsamlı rehber platformu.</p>
+        <span class="tag">Kendi Ürünümüz</span>
+      </a>
+      <a class="card" data-city="Online" href="https://sprachcafes.com" target="_blank" rel="noopener">
+        <div class="meta"><span>Almanya Geneli · Rehber</span><span class="arrow">↗</span></div>
+        <h3>Sprachcafe.com</h3>
+        <p>Almanya'daki ücretsiz dil pratiği buluşmalarını şehre göre listeleyen rehber — Hamburg, Berlin, Stuttgart, Köln ve daha fazlası.</p>
+        <span class="tag">Kendi Ürünümüz</span>
+      </a>
+      <a class="card" data-city="Online" href="https://caffe-linguistici-italia.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>İtalya Geneli · Rehber</span><span class="arrow">↗</span></div>
+        <h3>Caffe Linguistici Italia</h3>
+        <p>İtalya'da şehre, seviyeye ve dile göre güvenli dil buluşmalarını bir araya getiren kardeş platform.</p>
+        <span class="tag">Kendi Ürünümüz</span>
+      </a>
+      <a class="card" data-city="Online" href="https://german-life-helper-web.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · İçerik Platformu</span><span class="arrow">↗</span></div>
+        <h3>German Life Helper</h3>
+        <p>Almanya'da yaşamak ve çalışmak için 120'den fazla günlük ifade, A1-B1 sınav hazırlığı ve der/die/das antrenörü.</p>
+        <span class="tag">Kendi Ürünümüz</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="sector" data-sector="ai">
+    <div class="sector-head"><h2>AI Destekli Ürünler</h2><span class="count">5 proje · kendi ürünlerimiz</span></div>
+    <div class="grid">
+      <a class="card" data-city="Online" href="https://autopresence-app.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <h3>AutoPresence</h3>
+        <p>İşletmelere soğuk pazarlama için otomatik demo web sitesi üreten, onay sonrası yayına alınan sistem.</p>
+        <span class="tag">AI Sistemi</span>
+      </a>
+      <a class="card" data-city="Online" href="https://dijital-urun-katalog.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <h3>Koleksiyonum</h3>
+        <p>Pazarcı ve antikacılar için ürün fotoğrafını yapay zekâyla kataloğa çeviren, QR ile dijital tezgâh sunan sistem.</p>
+        <span class="tag">AI Sistemi</span>
+      </a>
+      <a class="card" data-city="Online" href="https://gewurzhandel-ai.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <h3>Gewürzhandel AI</h3>
+        <p>Baharat ve gıda toptancıları için yapay zekâ destekli dijital katalog ve online sipariş vitrini demosu.</p>
+        <span class="tag">AI Sistemi</span>
+      </a>
+      <a class="card" data-city="Online" href="https://solar.getdigitalguide.com" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <h3>Duru Solar</h3>
+        <p>Güneş enerjisi hesaplamalarını basitleştiren, EPC firmaları için yüksek dönüşümlü müşteri adayı üreten simülatör.</p>
+        <span class="tag">AI Sistemi</span>
+      </a>
+      <a class="card" data-city="Online" href="https://leschaco-exception-monitor.vercel.app" target="_blank" rel="noopener">
+        <div class="meta"><span>Online · AI Sistemi</span><span class="arrow">↗</span></div>
+        <h3>Leschaco Exception Monitor</h3>
+        <p>Lojistik sevkiyatlarda istisna ve gecikmeleri tek panelde izleyen, erken uyarı veren kontrol sistemi demosu.</p>
+        <span class="tag">AI Sistemi</span>
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <h2>Sıradaki dijital kimlik sizinki olsun.</h2>
+    <p>Web sitesi, AI otomasyonu, SEO veya WhatsApp lead sistemi — hangisi ilginizi çektiyse konuşalım.</p>
+    <a class="wa-cta" href="https://wa.me/message" target="_blank" rel="noopener">WhatsApp'tan Yazın →</a>
+    <div class="foot-bottom">
+      <span>Digital Guide — Web Tasarım · AI Otomasyon · SEO</span>
+      <span>getdigitalguide.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.tab');
+  const cityBtns = document.querySelectorAll('.city button');
+  const sectors = document.querySelectorAll('.sector');
+  let activeSector = 'all';
+  let activeCity = 'all';
+
+  function applyFilter(){
+    sectors.forEach(sec=>{
+      const matchesSector = activeSector === 'all' || sec.dataset.sector === activeSector;
+      const cards = sec.querySelectorAll('.card');
+      let visibleCount = 0;
+      cards.forEach(card=>{
+        const matchesCity = activeCity === 'all' || card.dataset.city === activeCity;
+        const show = matchesSector && matchesCity;
+        card.style.display = show ? '' : 'none';
+        if(show) visibleCount++;
+      });
+      sec.classList.toggle('is-hidden', visibleCount === 0);
+    });
+  }
+
+  tabs.forEach(tab=>{
+    tab.addEventListener('click', ()=>{
+      tabs.forEach(t=>t.classList.remove('active'));
+      tab.classList.add('active');
+      activeSector = tab.dataset.sector;
+      applyFilter();
+    });
+  });
+
+  cityBtns.forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      cityBtns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      activeCity = btn.dataset.city;
+      applyFilter();
+    });
+  });
+</script>
+
+</body>
+</html>
